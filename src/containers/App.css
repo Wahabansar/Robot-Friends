@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(
+    to left,
+    rgba(7, 27, 82, 1) 0%,
+    rgba(0, 128, 128, 1) 100%
+  );
+}
+.light {
+  background: rgba(0, 182, 182, 1);
+  color: black;
+  height: auto;
+  width: auto;
+  position: static;
+  border-radius: 10px;
+}
+.light:hover {
+  background-color: yellow;
+}
+.logo1 {
+  font-size: 300%;
+  background: rgba(0, 182, 182, 1);
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+.SearchBar {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
