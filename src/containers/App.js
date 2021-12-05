@@ -3,6 +3,19 @@ import Inputbar from "../components/Inputbar";
 import Card from "../components/Card";
 import "./App.css";
 import Scroll from "../components/Scroll";
+import { connect } from "react-redux";
+import setSearchField from "../Action";
+
+const mapStateToProps = (state) => {
+  return { searchField: state.searchField };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+  };
+};
+
 class App extends Component {
   constructor() {
     super();
@@ -20,12 +33,11 @@ class App extends Component {
     });
   }
 
-  onSearchChange = (event) => {
-    this.setState({ searchField: event.target.value });
-  };
-
   render() {
-    const { CardData, searchField } = this.state;
+    console.log("");
+
+    const { CardData } = this.state;
+    const { searchField, onSearchChange } = this.props;
     const filterCard = CardData.filter((CardData) => {
       return CardData.name.toLowerCase().includes(searchField.toLowerCase());
     });
@@ -33,7 +45,7 @@ class App extends Component {
       <h1>Loading.....</h1>
     ) : (
       <div>
-        <Inputbar searchChange={this.onSearchChange} />
+        <Inputbar searchChange={onSearchChange} />
         <Scroll>
           <Card CardData={filterCard} />
         </Scroll>
@@ -42,4 +54,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createLogger } from "redux-logger";
+import { createStore, applyMiddleware } from "redux";
 import App from "./containers/App";
+import { searchRobots } from "./Reducers";
 import reportWebVitals from "./reportWebVitals";
 
+const logger = createLogger();
+const store = createStore(searchRobots, applyMiddleware(logger));
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
+
   document.getElementById("root")
 );
 
